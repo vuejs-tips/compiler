@@ -1,0 +1,15 @@
+{
+  "name": "vue-web-compiler",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Marcos Neves <marcos.neves@gmail.com> (http://neves.github.io/)",
+  "license": "MIT",
+  "description": "",
+  "devDependencies": {
+    "live-server": "^1.2.0"
+  },
+  "scripts": {
+    "start": "live-server ."
+  },
+  "keywords": []
+}

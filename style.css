@@ -1,0 +1,51 @@
+html, body {
+  margin: 0;
+  background-color: black;
+}
+
+#app {
+  display: flex;
+  align-items: stretch;
+  min-height: 100vh;
+}
+
+.column {
+  width: 100%;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  border: none;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+pre {
+  margin: 0;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+pre code {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#error {
+  position: absolute;
+  bottom: 0;
+  color: white;
+  background-color: red;
+  padding: 5px;
+}
+
+#error, textarea, code, .CodeMirror {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.CodeMirror {
+  height: 100vh;
+}

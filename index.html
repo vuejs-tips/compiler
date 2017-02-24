@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <!-- vendors -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.24.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.24.2/theme/material.min.css">
+    <!-- app -->
+    <link href="style.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <div id="app">
+      <div class="column"><!-- Vue HTML editor -->
+        <div id="code"></div>
+        <div id="error" v-show="error">{{error}}</div>
+      </div>
+
+      <div class="column"><!-- Compiled Javascript Render Functions -->
+        <pre v-highlightjs="compiled"><code class="javascript"></code></pre>
+      </div>
+    </div>
+
+    <!-- vendors -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.6.9/beautify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.24.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.24.2/mode/xml/xml.min.js"></script>
+    <!-- app -->
+    <script src="app.js"></script>
+  </body>
+</html>
