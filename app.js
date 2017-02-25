@@ -71,9 +71,66 @@ const samples = [
     code: '<input v-model="fullName">'
   },
   {
+    label: 'v-model textarea',
+    code: `<!-- same as input -->\n<textarea v-model="fullName"></textarea>`
+  },
+  {
     label: 'v-model checkbox',
     code: '<input v-model="fullName" type="checkbox">'
-  }
+  },
+  {
+    label: 'v-model radio',
+    code: '<input v-model="fullName" type="radio">'
+  },
+  {
+    label: 'v-model select',
+    code: '<select v-model="fullName"></select>'
+  },
+  {
+    label: 'v-bind',
+    code: '<input v-bind:placeholder="inputMessage">'
+  },
+  {
+    label: 'v-on',
+    code: '<input v-on:input="update">'
+  },
+  {
+    label: 'v-on($event)',
+    code: '<input v-on:input="update($event)">'
+  },
+  {
+    label: 'v-on filter',
+    code: `<!-- filters does not work with v-on -->\n<input v-on:input="update | debounce(500)">`
+  },
+  {
+    label: 'v-bind with filter',
+    code: '<a v-bind:href="url | slugify">login</a>'
+  },
+  {
+    label: 'v-show',
+    code: '<a v-show="signedIn">logout</a>'
+  },
+  {
+    label: 'v-if',
+    code: '<a v-if="signedIn">logout</a>'
+  },
+  {
+    label: 'v-else',
+    code: `<nav>
+  <a v-if="signedIn">logout</a>
+  <a v-else>login</a>
+</nav>
+`
+  },
+  {
+    label: 'v-for',
+    code: `<ul>
+  <li v-for="todo, index in todos">
+    {{todo.label}}
+  </li>
+</ul>
+`
+  },
 ]
 
 // Throw error message as Exception, so I can catch Vue compilation errors
