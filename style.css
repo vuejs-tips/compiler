@@ -1,35 +1,52 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
 html, body {
   margin: 0;
-  background-color: black;
 }
-
-#app {
+header {
+  height: 50px;
+}
+.fb-column {
   display: flex;
+  flex-direction: column;
   align-items: stretch;
-  min-height: 100vh;
 }
-
-.column {
+.fb-row {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+.fb-grow {
+  display: flex;
+  flex-grow: 1;
   width: 100%;
+  flex-direction: column;
 }
-
-textarea {
-  display: block;
-  width: 100%;
-  border: none;
-  height: 100%;
-  box-sizing: border-box;
+#code {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
-
+.CodeMirror {
+  flex-grow: 1;
+}
 pre {
   margin: 0;
-  height: 100%;
-  box-sizing: border-box;
 }
 
-pre code {
+html, body, #app, .fb-row {
   height: 100%;
-  box-sizing: border-box;
+}
+
+#output {
+  flex-grow: 1;
+  background-color: #282c34;
 }
 
 #error {
@@ -43,9 +60,4 @@ pre code {
 #error, textarea, code, .CodeMirror {
   font-family: 'Source Code Pro', monospace;
   font-size: 18px;
-  font-weight: bold;
-}
-
-.CodeMirror {
-  height: 100vh;
 }

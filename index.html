@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <!-- vendors -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/atom-one-dark.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/atom-one-dark.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.24.2/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.24.2/theme/material.min.css">
     <!-- app -->
@@ -12,14 +12,20 @@
   </head>
   <body>
 
-    <div id="app">
-      <div class="column"><!-- Vue HTML editor -->
-        <div id="code"></div>
-        <div id="error" v-show="error">{{error}}</div>
-      </div>
+    <div id="app" class="fb-column">
+      <header>
+        Vue.js {{version}}
+      </header>
 
-      <div class="column"><!-- Compiled Javascript Render Functions -->
-        <pre v-highlightjs="compiled"><code class="javascript"></code></pre>
+      <div class="fb-row">
+        <div class="fb-grow"><!-- Vue HTML editor -->
+          <div id="code"></div>
+          <div id="error" v-show="error">{{error}}</div>
+        </div>
+
+        <div class="fb-grow"><!-- Compiled Javascript Render Functions -->
+          <pre id="output" v-highlightjs="compiled"><code class="javascript"></code></pre>
+        </div>
       </div>
     </div>
 

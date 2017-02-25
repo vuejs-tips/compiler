@@ -18,9 +18,10 @@ new Vue({
   el: '#app',
 
   data: {
-    input: localStorage.getItem('input'), // restore after refresh
+    input: localStorage.getItem('input') || '<div></div>', // restore after refresh
     error: '',
-    code: ''
+    code: '',
+    version: Vue.version
   },
 
   mounted () {
@@ -30,6 +31,13 @@ new Vue({
       mode: "text/html", // https://github.com/codemirror/CodeMirror/blob/5.24.0/mode/xml/index.html#L41
       theme: 'material', // https://codemirror.net/demo/theme.html#material
       tabSize: 2 // http://codemirror.net/doc/manual.html#config
+    })
+
+    // fix cursor position after google font family has loaded
+    // https://github.com/codemirror/CodeMirror/issues/3764#issuecomment-171560662
+    window.addEventListener('load', function () {
+      editor.getWrapperElement().style.fontSize = '18px'
+      editor.refresh()
     })
 
     editor.on('change', _.debounce(cm => this.input = cm.getValue(), 500))
