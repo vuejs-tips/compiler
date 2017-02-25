@@ -21,19 +21,19 @@
         <nav>
           <ul>
             <li v-for="{label, code}, index in samples">
-              <a :href="'#' + index + '-' + label" @click="setCode(code)">
+              <a :href="'#' + index + '-' + label" @click="input = code">
                 {{label}}
               </a>
             </li>
           </ul>
         </nav>
         <div class="fb-grow"><!-- Vue HTML editor -->
-          <div id="code"></div>
+          <code-mirror id="code" v-model="input"></code-mirror>
           <div id="error" v-show="error">{{error}}</div>
         </div>
 
         <div class="fb-grow"><!-- Compiled Javascript Render Functions -->
-          <pre id="output" v-highlightjs="compiled"><code class="javascript"></code></pre>
+          <highlight id="output" :code="compiled"></highlight>
         </div>
       </div>
     </div>

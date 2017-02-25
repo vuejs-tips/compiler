@@ -11,6 +11,56 @@ function compile (code) {
   return code
 }
 
+Vue.component('highlight', {
+  template: '<pre><code class="javascript"></code></pre>',
+  props: ['code'],
+  mounted () {
+    this.refresh()
+  },
+  watch: {
+    code () {
+      this.refresh()
+    }
+  },
+  methods: {
+    refresh () {
+      var codeTag = this.$el.querySelector('code')
+      codeTag.innerHTML = this.code
+      hljs.highlightBlock(codeTag)
+    }
+  }
+})
+
+Vue.component('code-mirror', {
+  template: '<div></div>',
+  props: ['value'],
+  mounted () {
+    // convert textarea to syntax highlight editor http://codemirror.net/
+    var editor = CodeMirror(this.$el, {
+      value: this.value,
+      mode: "text/html", // https://github.com/codemirror/CodeMirror/blob/5.24.0/mode/xml/index.html#L41
+      theme: 'material', // https://codemirror.net/demo/theme.html#material
+      tabSize: 2 // http://codemirror.net/doc/manual.html#config
+    })
+
+    // fix cursor position after google font family has loaded
+    // https://github.com/codemirror/CodeMirror/issues/3764#issuecomment-171560662
+    window.addEventListener('load', function () {
+      editor.getWrapperElement().style.fontSize = '16px'
+      editor.refresh()
+    })
+
+    editor.on('change', cm => this.$emit('input', cm.getValue()))
+    this.editor = editor
+  },
+  watch: {
+    value (val) {
+      if (val === this.editor.getValue()) return // changed from inside
+      this.editor.setValue(val)
+    }
+  }
+})
+
 const samples = [
   {
     label: 'v-model component',
@@ -40,27 +90,6 @@ new Vue({
     samples
   },
 
-  mounted () {
-    // convert textarea to syntax highlight editor http://codemirror.net/
-    var editor = CodeMirror(document.getElementById('code'), {
-      value: this.input,
-      mode: "text/html", // https://github.com/codemirror/CodeMirror/blob/5.24.0/mode/xml/index.html#L41
-      theme: 'material', // https://codemirror.net/demo/theme.html#material
-      tabSize: 2 // http://codemirror.net/doc/manual.html#config
-    })
-
-    // fix cursor position after google font family has loaded
-    // https://github.com/codemirror/CodeMirror/issues/3764#issuecomment-171560662
-    window.addEventListener('load', function () {
-      editor.getWrapperElement().style.fontSize = '16px'
-      editor.refresh()
-    })
-
-    editor.on('change', _.debounce(cm => this.input = cm.getValue(), 500))
-
-    this.editor = editor
-  },
-
   computed: {
     compiled () {
       try {
@@ -72,20 +101,6 @@ new Vue({
       }
 
       return this.code
-    }
-  },
-
-  methods: {
-    setCode (val) {
-      this.editor.setValue(val)
-    }
-  },
-
-  directives: {
-    highlightjs (el, binding) {
-      var codeTag = el.querySelector('code')
-      codeTag.innerHTML = binding.value
-      hljs.highlightBlock(codeTag)
     }
   }
 })
