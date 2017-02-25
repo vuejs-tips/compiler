@@ -11,6 +11,21 @@ function compile (code) {
   return code
 }
 
+const samples = [
+  {
+    label: 'v-model component',
+    code: '<name-input v-model="fullName"></name-input>'
+  },
+  {
+    label: 'v-model input',
+    code: '<input v-model="fullName">'
+  },
+  {
+    label: 'v-model checkbox',
+    code: '<input v-model="fullName" type="checkbox">'
+  }
+]
+
 // Throw error message as Exception, so I can catch Vue compilation errors
 console.error = function (msg) {throw msg}
 
@@ -21,7 +36,8 @@ new Vue({
     input: localStorage.getItem('input') || '<div></div>', // restore after refresh
     error: '',
     code: '',
-    version: Vue.version
+    version: Vue.version,
+    samples
   },
 
   mounted () {
@@ -36,15 +52,17 @@ new Vue({
     // fix cursor position after google font family has loaded
     // https://github.com/codemirror/CodeMirror/issues/3764#issuecomment-171560662
     window.addEventListener('load', function () {
-      editor.getWrapperElement().style.fontSize = '18px'
+      editor.getWrapperElement().style.fontSize = '16px'
       editor.refresh()
     })
 
     editor.on('change', _.debounce(cm => this.input = cm.getValue(), 500))
+
+    this.editor = editor
   },
 
   computed: {
-    compiled: function () {
+    compiled () {
       try {
         this.code = compile(this.input)
         this.error = '' // clear error if compiled
@@ -54,6 +72,12 @@ new Vue({
       }
 
       return this.code
+    }
+  },
+
+  methods: {
+    setCode (val) {
+      this.editor.setValue(val)
     }
   },
 

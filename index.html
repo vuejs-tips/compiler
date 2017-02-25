@@ -12,12 +12,21 @@
   </head>
   <body>
 
-    <div id="app" class="fb-column">
+    <div id="app" class="fb-column" v-cloak>
       <header>
         Vue.js {{version}}
       </header>
 
       <div class="fb-row">
+        <nav>
+          <ul>
+            <li v-for="{label, code}, index in samples">
+              <a :href="'#' + index + '-' + label" @click="setCode(code)">
+                {{label}}
+              </a>
+            </li>
+          </ul>
+        </nav>
         <div class="fb-grow"><!-- Vue HTML editor -->
           <div id="code"></div>
           <div id="error" v-show="error">{{error}}</div>
