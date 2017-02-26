@@ -10,11 +10,15 @@ html, body {
   margin: 0;
 }
 header {
+  padding: 0 10px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: 30px;
   background-color: #333;
   color: white;
+}
+header > * {
 }
 .fb-column {
   display: flex;
@@ -76,6 +80,7 @@ nav.menu {
   margin-left: -150px;
   width: 300px;
   transition: margin-left 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+  overflow-y: auto;
 }
 
 nav.menu li {
@@ -95,6 +100,7 @@ nav.menu li:hover {
 
 nav.menu li.active {
   background-color: #efe;
+  font-weight: bold;
 }
 
 nav.menu.showing {
@@ -102,6 +108,15 @@ nav.menu.showing {
 }
 [v-cloak] {
   display: none;
+}
+
+#share {
+  text-decoration: none;
+  color: #ccc;
+}
+
+#share:hover {
+  color: white;
 }
 
 /* hamburger svg menu */
