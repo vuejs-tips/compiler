@@ -124,7 +124,7 @@ const samples = [
   },
   {
     label: 'v-for',
-    code: `<ul>
+    code: `<ul><!-- v-for can't be the root element -->
   <li v-for="todo, index in todos">
     {{todo.label}}
   </li>
@@ -144,7 +144,8 @@ new Vue({
     error: '',
     code: '',
     version: Vue.version,
-    samples
+    samples,
+    showMenu: false
   },
 
   computed: {
