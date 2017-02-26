@@ -72,10 +72,29 @@ ul {
   padding: 0;
 }
 nav.menu {
+  background-color: #fafafa;
   margin-left: -150px;
   width: 300px;
-
   transition: margin-left 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+nav.menu li {
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+nav.menu a {
+  text-decoration: none;
+  color: #444;
+  display: block;
+}
+
+nav.menu li:hover {
+  background-color: #ccc;
+}
+
+nav.menu li.active {
+  background-color: #efe;
 }
 
 nav.menu.showing {

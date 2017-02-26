@@ -28,8 +28,8 @@
       <div class="fb-row">
         <nav class="menu" :class="{showing: showMenu}">
           <ul>
-            <li v-for="{label, code}, index in samples">
-              <a :href="'#' + index + '-' + label" @click="input = code">
+            <li v-for="code, label in samples" :class="{active: label === selectedMenu}">
+              <a :href="'#' + encodeURI(label)" @click="select(label)">
                 {{label}}
               </a>
             </li>

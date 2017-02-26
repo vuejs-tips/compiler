@@ -60,78 +60,32 @@ Vue.component('code-mirror', {
     }
   }
 })
-
-const samples = [
-  {
-    label: 'v-model component',
-    code: '<name-input v-model="fullName"></name-input>'
-  },
-  {
-    label: 'v-model input',
-    code: '<input v-model="fullName">'
-  },
-  {
-    label: 'v-model textarea',
-    code: `<!-- same as input -->\n<textarea v-model="fullName"></textarea>`
-  },
-  {
-    label: 'v-model checkbox',
-    code: '<input v-model="fullName" type="checkbox">'
-  },
-  {
-    label: 'v-model radio',
-    code: '<input v-model="fullName" type="radio">'
-  },
-  {
-    label: 'v-model select',
-    code: '<select v-model="fullName"></select>'
-  },
-  {
-    label: 'v-bind',
-    code: '<input v-bind:placeholder="inputMessage">'
-  },
-  {
-    label: 'v-on',
-    code: '<input v-on:input="update">'
-  },
-  {
-    label: 'v-on($event)',
-    code: '<input v-on:input="update($event)">'
-  },
-  {
-    label: 'v-on filter',
-    code: `<!-- filters does not work with v-on -->\n<input v-on:input="update | debounce(500)">`
-  },
-  {
-    label: 'v-bind with filter',
-    code: '<a v-bind:href="url | slugify">login</a>'
-  },
-  {
-    label: 'v-show',
-    code: '<a v-show="signedIn">logout</a>'
-  },
-  {
-    label: 'v-if',
-    code: '<a v-if="signedIn">logout</a>'
-  },
-  {
-    label: 'v-else',
-    code: `<nav>
+const samples = {
+    'v-model component': '<name-input v-model="fullName"></name-input>',
+    'v-model input': '<input v-model="fullName">',
+    'v-model textarea': `<!-- same as input -->\n<textarea v-model="fullName"></textarea>`,
+    'v-model checkbox': '<input v-model="fullName" type="checkbox">',
+    'v-model radio': '<input v-model="fullName" type="radio">',
+    'v-model select': '<select v-model="fullName"></select>',
+    'v-bind': '<input v-bind:placeholder="inputMessage">',
+    'v-on': '<input v-on:input="update">',
+    'v-on($event)': '<input v-on:input="update($event)">',
+    'v-on filter': `<!-- filters does not work with v-on -->\n<input v-on:input="update | debounce(500)">`,
+    'v-bind with filter': '<a v-bind:href="url | slugify">login</a>',
+    'v-show': '<a v-show="signedIn">logout</a>',
+    'v-if': '<a v-if="signedIn">logout</a>',
+    'v-else': `<nav>
   <a v-if="signedIn">logout</a>
   <a v-else>login</a>
 </nav>
-`
-  },
-  {
-    label: 'v-for',
-    code: `<ul><!-- v-for can't be the root element -->
+`,
+    'v-for': `<ul><!-- v-for can't be the root element -->
   <li v-for="todo, index in todos">
     {{todo.label}}
   </li>
 </ul>
 `
-  },
-]
+}
 
 // Throw error message as Exception, so I can catch Vue compilation errors
 console.error = function (msg) {throw msg}
@@ -145,7 +99,8 @@ new Vue({
     code: '',
     version: Vue.version,
     samples,
-    showMenu: false
+    showMenu: !!decodeURI(location.hash.substr(1)),
+    selectedMenu: decodeURI(location.hash.substr(1))
   },
 
   computed: {
@@ -159,6 +114,13 @@ new Vue({
       }
 
       return this.code
+    }
+  },
+
+  methods: {
+    select (label) {
+      this.input = samples[label]
+      this.selectedMenu = label
     }
   }
 })
