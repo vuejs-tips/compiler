@@ -147,7 +147,8 @@ new Vue({
     input: input, // restore after refresh
     error: '',
     code: '',
-    version: Vue.version,
+    vueVersion: Vue.version,
+    version: process.env.VERSION,
     samples,
     showMenu: !!samples[urlParam],
     selectedMenu: urlParam
