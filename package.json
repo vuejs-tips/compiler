@@ -1,6 +1,6 @@
 {
   "name": "vue-web-compiler",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "index.js",
   "author": "Marcos Neves <marcos.neves@gmail.com> (http://neves.github.io/)",
   "license": "MIT",
@@ -9,7 +9,8 @@
     "live-server": "^1.2.0"
   },
   "scripts": {
-    "start": "live-server ."
+    "start": "vue build src/index.js --config config.js",
+    "dist": "vue build src/index.js --config config.js --webpack webpack.config.js --dist ./dist/ --prod"
   },
   "keywords": []
 }
