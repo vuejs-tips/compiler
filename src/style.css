@@ -85,6 +85,7 @@ nav.menu {
   margin-left: -150px;
   transition: margin-left 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
   overflow-y: auto;
+  padding-bottom: 20px;
 }
 
 nav.menu li {

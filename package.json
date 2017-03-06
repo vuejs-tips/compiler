@@ -1,13 +1,18 @@
 {
   "name": "vue-web-compiler",
   "version": "0.3.0",
-  "main": "index.js",
-  "author": "Marcos Neves <marcos.neves@gmail.com> (http://neves.github.io/)",
+  "description": "Vue.js template compiler playground",
+  "main": "src/index.js",
+  "author": "Marcos Neves <marcos.neves@gmail.com> (https://medium.com/vuejs-tips)",
   "license": "MIT",
-  "description": "",
+  "keywords": [
+    "vue",
+    "compiler",
+    "template",
+    "playground"
+  ],
   "scripts": {
     "start": "vue build src/index.js --config config.js",
     "dist": "vue build src/index.js --config config.js --webpack webpack.config.js --dist ./vue-web-compiler/ --prod"
-  },
-  "keywords": []
+  }
 }
