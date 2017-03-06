@@ -2,9 +2,7 @@ import samples from './samples'
 import CodeMirror from './components/CodeMirror'
 import Highlight from './components/Highlight'
 import compile from './components/compiler'
-
-// Throw error message as Exception, so I can catch Vue compilation errors
-console.error = function (msg) {throw msg}
+import shortener from './components/shortener'
 
 var urlParam = decodeURI(location.hash.substr(1))
 var input = urlParam ? samples[urlParam] || atob(urlParam) : localStorage.getItem('input') || '<div></div>'
@@ -21,7 +19,8 @@ new Vue({
     version: process.env.VERSION,
     samples,
     showMenu: !!samples[urlParam],
-    selectedMenu: urlParam
+    selectedMenu: urlParam,
+    shortUrl: ''
   },
 
   computed: {
@@ -50,6 +49,11 @@ new Vue({
     select (label) {
       this.input = samples[label]
       this.selectedMenu = label
+    },
+
+    share () {
+      this.shortUrl = this.shareUrl
+      shortener(this.shareUrl).then(url => this.shortUrl = url)
     }
-  }
+  },
 })

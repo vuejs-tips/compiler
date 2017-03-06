@@ -25,7 +25,14 @@
             <rect width="24" height="30" fill="none"></rect><!-- needs to be here as a 'hit area' -->
 					</g>
     		</svg>
-        <a id="share" :href="shareUrl" target="_blank">share this example</a>
+        <!-- <a id="share" :href="shareUrl" target="_blank">share this example</a> -->
+        <div>
+          <button @click="share">share this example</button>
+          <span v-show="shortUrl">
+            <input type="text" :value="shortUrl" readonly @focus="$event.target.select()" style="width: 130px">
+            <button>copy</button>
+          </span>
+        </div>
         <span id="version" :title="version">Vue.js {{vueVersion}}</span>
       </header>
 
@@ -63,10 +70,8 @@
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
       ga('create', 'UA-183197-49', 'auto');
       ga('send', 'pageview');
-
     </script>
   </body>
 </html>
