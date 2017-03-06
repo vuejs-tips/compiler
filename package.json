@@ -15,6 +15,7 @@
     "start": "vue build src/index.js --config config.js",
     "build": "yarn dist -- --disable-compress",
     "dist": "vue build src/index.js --config config.js --webpack webpack.config.js --dist ./vue-web-compiler/ --prod",
+    "deploy": "npm version minor; yarn dist; cp -f vue-web-compiler/index.html ./index.html; git add .",
     "serve": "open 'http://localhost:3000/vue-web-compiler/'; serve ."
   },
   "devDependencies": {
