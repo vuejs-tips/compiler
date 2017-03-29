@@ -3,13 +3,15 @@ import CodeMirror from './components/CodeMirror'
 import Highlight from './components/Highlight'
 import compile from './components/compiler'
 import shortener from './components/shortener'
+import GithubRibbon from './components/GithubRibbon.vue'
+import MenuToggler from './components/MenuToggler.vue'
 
 var urlParam = decodeURI(location.hash.substr(1))
 var input = urlParam ? samples[urlParam] || atob(urlParam) : localStorage.getItem('input') || '<div></div>'
 
 new Vue({
   el: '#app',
-  components: {CodeMirror, Highlight},
+  components: {CodeMirror, Highlight, GithubRibbon, MenuToggler},
 
   data: {
     input: input, // restore after refresh

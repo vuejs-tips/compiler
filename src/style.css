@@ -41,6 +41,7 @@ header > * {
   display: flex;
   flex-direction: column;
   cursor: text;
+  flex-basis: 100%;
 }
 .CodeMirror {
   flex-grow: 1;
