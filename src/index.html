@@ -18,8 +18,8 @@
         <div>
           <button @click="share">share this example</button>
           <span v-show="shortUrl">
-            <input type="text" :value="shortUrl" readonly @focus="$event.target.select()" style="width: 130px">
-            <button>copy</button>
+            <input id="url" type="text" :value="shortUrl" readonly @focus="$event.target.select()" style="width: 130px">
+            <button class="copy" data-clipboard-target="#url">copy</button>
           </span>
         </div>
         <span id="version" :title="version">Vue.js {{vueVersion}}</span>

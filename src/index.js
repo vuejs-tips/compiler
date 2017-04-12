@@ -6,3 +6,6 @@ console.error = function (msg) {throw msg}
 
 import './app'
 import './style.css'
+
+import Clipboard from 'clipboard/dist/clipboard'
+new Clipboard('.copy')

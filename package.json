@@ -22,5 +22,8 @@
   },
   "devDependencies": {
     "html-webpack-inline-source-plugin": "^0.0.8"
+  },
+  "dependencies": {
+    "clipboard": "^1.6.1"
   }
 }
