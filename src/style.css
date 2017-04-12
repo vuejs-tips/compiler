@@ -129,6 +129,17 @@ nav.menu.showing {
   color: white;
 }
 
+input {
+  outline: none;
+  border-radius: 6px;
+  border: 1px solid silver;
+  height: 25px;
+  line-height: 25px;
+  font-size: 0.7em;
+  display: block;
+  width: 100%;
+  padding: 4px;
+}
 /* hamburger svg menu */
 
 .svg-menu-toggle:hover {

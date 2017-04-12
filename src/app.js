@@ -15,6 +15,7 @@ new Vue({
 
   data: {
     input: input, // restore after refresh
+    filter: '',
     error: '',
     code: '',
     vueVersion: Vue.version,
@@ -26,6 +27,21 @@ new Vue({
   },
 
   computed: {
+    filteredSamples () {
+      if (this.filter === '') {
+        return this.samples
+      } else {
+        var samples = {}
+        for (let label in this.samples) {
+          var code = this.samples[label].toLowerCase()
+          if (code.match(this.filter.toLowerCase()) || label.toLowerCase().match(this.filter.toLowerCase())) {
+            samples[label] = code
+          }
+        }
+        return samples
+      }
+    },
+
     compiled () {
       try {
         this.code = compile(this.input)

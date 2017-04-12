@@ -28,7 +28,10 @@
       <div class="fb-row">
         <nav class="menu" :class="{showing: showMenu}">
           <ul>
-            <li v-for="code, label in samples" :class="{active: label === selectedMenu}">
+            <li>
+              <input type="search" v-model.trim="filter" placeholder="type your search here" />
+            </li>
+            <li v-for="code, label in filteredSamples" :class="{active: label === selectedMenu}">
               <a :href="'#' + encodeURI(label)" @click="select(label)">
                 {{label}}
               </a>
