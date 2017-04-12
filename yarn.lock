@@ -6,9 +6,9 @@ escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
 
-html-webpack-inline-source-plugin@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/html-webpack-inline-source-plugin/-/html-webpack-inline-source-plugin-0.0.6.tgz#87f0447628c922518a7cff5b6016866ebc37d4bd"
+html-webpack-inline-source-plugin@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/html-webpack-inline-source-plugin/-/html-webpack-inline-source-plugin-0.0.8.tgz#245c0f33e14e017c224d61dbdb74ac58536596c2"
   dependencies:
     escape-string-regexp "^1.0.5"
     slash "^1.0.0"

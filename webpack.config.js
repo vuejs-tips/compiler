@@ -5,7 +5,7 @@ const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin
 module.exports = {
   devtool: false,
   output: {
-    publicPath: '/vue-web-compiler/' // same path as online version
+    publicPath: '' // same path as online version
   },
   plugins: [
     new webpack.DefinePlugin({
