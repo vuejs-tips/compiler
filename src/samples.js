@@ -1,5 +1,6 @@
 export default {
     'custom': '<!-- type your html here -->',
+    'sync': '<comp :foo.sync="bar"></comp>',
     'v-model': '<name-input v-model="fullName"></name-input>',
     'v-model_input': '<input v-model="fullName">',
     'v-model_textarea': `<!-- same as input -->\n<textarea v-model="fullName"></textarea>`,
