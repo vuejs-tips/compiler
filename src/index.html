@@ -38,14 +38,16 @@
             </li>
           </ul>
         </nav>
-        <div class="fb-grow"><!-- Vue HTML editor -->
-          <code-mirror id="code" v-model="input"></code-mirror>
-          <div id="error" v-show="error">{{error}}</div>
-        </div>
+        <split-pane>
+          <div slot="left" class="fb-grow"><!-- Vue HTML editor -->
+            <code-mirror id="code" v-model="input"></code-mirror>
+            <div id="error" v-show="error">{{error}}</div>
+          </div>
 
-        <div class="fb-grow"><!-- Compiled Javascript Render Functions -->
-          <highlight id="output" :code="compiled"></highlight>
-        </div>
+          <div slot="right" class="fb-grow"><!-- Compiled Javascript Render Functions -->
+            <highlight id="output" :code="compiled"></highlight>
+          </div>
+        </split-pane>
       </div>
     </div>
 
