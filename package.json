@@ -1,6 +1,6 @@
 {
   "name": "vue-web-compiler",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Vue.js template compiler playground",
   "main": "src/index.js",
   "author": "Marcos Neves <marcos.neves@gmail.com> (https://medium.com/vuejs-tips)",
