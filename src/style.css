@@ -48,9 +48,10 @@ header > * {
 }
 pre {
   margin: 0;
+
 }
 
-html, body, #app, .fb-row {
+html, body, pre, code, #app, .fb-row, .fb-grow {
   height: 100%;
 }
 
